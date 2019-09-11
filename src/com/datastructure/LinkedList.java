@@ -24,12 +24,21 @@ public class LinkedList {
 		//list.showNode();
 		list.deleteNode(4);
 		list.deleteNode(3);
-		list.deleteNode(2);
+		//list.deleteNode(2);
 		//list.deleteNode(8);
 		//list.showNode();
-		list.deleteNode(1);
 		list.showNode();
 		System.out.println(list.countNode());
+		System.out.println(list.findKReverse(4));
+		list.addNode(l4);
+		list.addNode(l5);
+		list.addNode(l3);
+		System.out.println("-------------");
+		list.showNode();
+		list.reverseLinkedList();
+		System.out.println("-------------");
+		list.showNode();
+		
 		
 		
 		
@@ -60,6 +69,7 @@ class SinglyLinkedList {
 				temp.next = node;
 				return;
 			}
+			
 			if(node.id<temp.next.id) {
 				node.next=temp.next;
 				temp.next=node;
@@ -84,12 +94,32 @@ class SinglyLinkedList {
 		if(temp.next==null) {
 			return null;
 		}
+		
 		int size = countNode();
+		if(k>size||k<=0) {
+			return null;
+		}
 		for(int i =0;i<size-k+1;i++) {
 			temp = temp.next;
 		}
 		return temp;
 		
+	}
+	
+	public void reverseLinkedList() {
+		ListNode temp = head;
+		if(temp.next ==null||temp.next.next==null) {
+			return;
+		}
+		ListNode reverseNode = new ListNode(0,"","");
+		ListNode curt = temp.next;
+		while(curt!=null) {
+			ListNode next = curt.next;
+			curt.next = reverseNode.next;
+			reverseNode.next = curt;
+			curt = next;
+		}
+		head.next = reverseNode.next;
 	}
 	
 	
