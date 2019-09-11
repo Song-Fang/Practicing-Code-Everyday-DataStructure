@@ -1,5 +1,7 @@
 package com.datastructure;
 
+import java.util.Stack;
+
 public class LinkedList {
 	public static void main(String [] args) {
 		ListNode l1 = new ListNode(1,"Egg","Lynn");
@@ -38,6 +40,9 @@ public class LinkedList {
 		list.reverseLinkedList();
 		System.out.println("-------------");
 		list.showNode();
+		System.out.println("-------------");
+		list.reversePrint();
+		
 		
 		
 		
@@ -162,6 +167,21 @@ class SinglyLinkedList {
 				break;
 			}
 			temp = temp.next;
+		}
+	}
+	
+	public void reversePrint() {
+		if(head.next==null) {
+			return;
+		}
+		ListNode temp = head;
+		Stack<ListNode> newStack = new Stack<ListNode>();
+		while(temp.next!=null) {
+			newStack.add(temp.next);
+			temp = temp.next;
+		}
+		while(newStack.size()!=0) {
+			System.out.println(newStack.pop());
 		}
 	}
 	
