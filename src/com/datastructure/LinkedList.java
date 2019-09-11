@@ -19,14 +19,17 @@ public class LinkedList {
 		list.updateNode(l6);
 		//list.showNode();
 		list.deleteNode(5);
+		list.showNode();
+		System.out.println(list.countNode());
 		//list.showNode();
 		list.deleteNode(4);
 		list.deleteNode(3);
 		list.deleteNode(2);
-		list.deleteNode(8);
+		//list.deleteNode(8);
 		//list.showNode();
 		list.deleteNode(1);
 		list.showNode();
+		System.out.println(list.countNode());
 		
 		
 		
@@ -65,6 +68,31 @@ class SinglyLinkedList {
 			temp = temp.next;
 		}
 	}
+	
+	public int countNode() {
+		int count = 0;
+		ListNode temp = head;
+		while(temp.next!=null) {
+			temp = temp.next;
+			count++;
+		}
+		return count;
+	}
+	
+	public ListNode findKReverse(int k) {
+		ListNode temp = head;
+		if(temp.next==null) {
+			return null;
+		}
+		int size = countNode();
+		for(int i =0;i<size-k+1;i++) {
+			temp = temp.next;
+		}
+		return temp;
+		
+	}
+	
+	
 	
 	public void updateNode(ListNode node) {
 		ListNode temp = head;
@@ -113,12 +141,9 @@ class SinglyLinkedList {
 			System.out.println("LinkedList is empty");
 			return;
 		}
-		while(true) {
-			if(temp.next==null) {
-				break;
-			}
-			temp = temp.next;
-			System.out.println(temp);
+		while(temp.next!=null) {
+			System.out.println(temp.next);
+			temp=temp.next;
 		}
 	}
 }
