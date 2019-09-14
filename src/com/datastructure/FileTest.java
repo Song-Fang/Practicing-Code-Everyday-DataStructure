@@ -154,7 +154,7 @@ public class FileTest {
 
 	public static void deleteDirectory(String name) {
 		File file = new File(name);
-		if (!file.delete()) {
+		if (file.isDirectory()) {
 			File[] fileList = file.listFiles();
 			for (File ele : fileList) {
 				if (!ele.delete()) {
