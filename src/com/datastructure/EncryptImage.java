@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.junit.Test;
+
 public class EncryptImage {
 	
 	
@@ -16,6 +18,25 @@ public class EncryptImage {
 		while((len = fis.read(data))!=-1) {
 			for(int i = 0;i<len;i++) {
 				data[i] = (byte) (data[i]^5);
+			}
+			fos.write(data);
+		}
+		
+		fis.close();
+		fos.close();
+		
+	}
+	
+	@Test
+	public void decyptImage() throws IOException {
+		FileInputStream fis = new FileInputStream("d:\\io\\TestEncrypt.jpg");
+		FileOutputStream fos = new FileOutputStream("d:\\io\\TestDecrypt.jpg");
+		
+		byte [] data = new byte[500];
+		int len;
+		while((len = fis.read(data))!=-1) {
+			for(int i = 0;i<len;i++) {
+				data[i] = (byte) (data[i]^5^5);
 			}
 			fos.write(data);
 		}
