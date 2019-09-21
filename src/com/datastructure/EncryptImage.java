@@ -36,7 +36,7 @@ public class EncryptImage {
 		int len;
 		while((len = fis.read(data))!=-1) {
 			for(int i = 0;i<len;i++) {
-				data[i] = (byte) (data[i]^5^5);
+				data[i] = (byte) (data[i]^5);
 			}
 			fos.write(data);
 		}
