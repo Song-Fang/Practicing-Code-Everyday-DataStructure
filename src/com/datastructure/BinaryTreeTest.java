@@ -20,6 +20,10 @@ public class BinaryTreeTest {
 		bt.postOrder();
 		
 		System.out.println(bt.preSearch(1));
+		
+		bt.deleteNode(7);
+		bt.preOrder();
+		
 	}
 }
 
@@ -85,6 +89,20 @@ class BinaryTree {
 		} else {
 			return null;
 		}
+	}
+	
+	public void deleteNode(int id) {
+		if(root==null) {
+			System.out.println("There is no treeNode in this Tree");
+			return;
+		}
+		
+		if(root.getId()==id) {
+			root =null;
+			return;
+		}
+		
+		root.deleteNode(id);
 	}
 	
 	
@@ -210,6 +228,24 @@ class TreeNode {
 		}
 
 		return result;
+	}
+	
+	public void deleteNode(int id) {
+		if(this.left!=null) {
+			if(this.left.id==id) {
+				this.left = null;
+			}else {
+				this.left.deleteNode(id);
+			}
+		}
+		
+		if(this.right!=null) {
+			if(this.right.id==id) {
+				this.right = null;
+			}else {
+				this.right.deleteNode(id);
+			}
+		}
 	}
 
 	@Override
