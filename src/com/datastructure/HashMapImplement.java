@@ -10,14 +10,25 @@ public class HashMapImplement {
 		ListNodeEmp emp3 = new ListNodeEmp(15, "Katy");
 		ListNodeEmp emp4 = new ListNodeEmp(22, "Peter");
 		ListNodeEmp emp5 = new ListNodeEmp(88, "Lewis");
+		ListNodeEmp emp6 = new ListNodeEmp(6,"Homo");
+		ListNodeEmp emp7 = new ListNodeEmp(7,"Chen");
+		ListNodeEmp emp8 = new ListNodeEmp(5,"Chen");
 
 		hashMapEmp.addEmp(emp1);
 		hashMapEmp.addEmp(emp2);
 		hashMapEmp.addEmp(emp3);
 		hashMapEmp.addEmp(emp4);
 		hashMapEmp.addEmp(emp5);
-
+		hashMapEmp.addEmp(emp6);
+		hashMapEmp.addEmp(emp7);
+		hashMapEmp.addEmp(emp8);
+		
 		hashMapEmp.showEmp();
+		hashMapEmp.findEmp(7);
+		hashMapEmp.findEmp(22);
+		hashMapEmp.deleteEmp(22);
+		hashMapEmp.findEmp(22);
+		
 	}
 }
 
@@ -32,19 +43,25 @@ class HashMapEmp {
 
 	public void addEmp(ListNodeEmp emp) {
 		int i = emp.id % 7;
-		linkedListEmp[i] = new LinkedListEmp();
+		if (linkedListEmp[i] == null) {
+			linkedListEmp[i] = new LinkedListEmp();
+		}
 		linkedListEmp[i].addNode(emp);
 	}
 
 	public void findEmp(int id) {
 		int i = id % 7;
-		linkedListEmp[i] = new LinkedListEmp();
+		if(linkedListEmp[i]==null) {
+			System.out.println("The Emp can't be found!");
+		}
 		linkedListEmp[i].findNode(id);
 	}
 
 	public void deleteEmp(int id) {
 		int i = id % 7;
-		linkedListEmp[i] = new LinkedListEmp();
+		if(linkedListEmp[i]==null) {
+			System.out.println("The Emp can't be found!");
+		}
 		linkedListEmp[i].deleteNode(id);
 	}
 
