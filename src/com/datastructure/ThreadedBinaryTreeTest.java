@@ -32,6 +32,8 @@ class ThreadedBinaryTree{
 		}
 		
 		
+		
+		pre = root;
 		threadedBinaryTree(root.getRight());
 	}
 	
