@@ -5,8 +5,38 @@ public class ThreadedBinaryTreeTest {
 }
 
 class ThreadedBinaryTree{
+	ThreadedTreeNode root;
+	ThreadedTreeNode pre;
+
+	public ThreadedBinaryTree(ThreadedTreeNode root) {
+		super();
+		this.root = root;
+	}
+
+	public ThreadedBinaryTree() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void threadedBinaryTree(ThreadedTreeNode root) {
+		if(root == null) {
+			return;
+		}
+		
+		threadedBinaryTree(root.getLeft());
+		
+		if(root.getLeft()==null) {
+			root.setLeft(pre);
+			root.setLeftNodeType(1);
+			
+		}
+		
+		
+		threadedBinaryTree(root.getRight());
+	}
 	
 }
+
 
 class ThreadedTreeNode{
 	private int id;
