@@ -7,7 +7,7 @@ public class ThreadedBinaryTreeTest {
 		ThreadedTreeNode t3 = new ThreadedTreeNode(3);
 		ThreadedTreeNode t4 = new ThreadedTreeNode(4);
 		ThreadedTreeNode t5 = new ThreadedTreeNode(5);
-		t1.setLeft(t1);
+		t1.setLeft(t2);
 		t1.setRight(t3);
 		t2.setLeft(t4);
 		t2.setRight(t5);
@@ -52,6 +52,7 @@ class ThreadedBinaryTree {
 		}
 
 		pre = node;
+		
 		threadedBinaryTree(node.getRight());
 	}
 
